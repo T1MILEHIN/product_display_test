@@ -18,7 +18,7 @@ interface Product {
 }
 
 export default async function Home({ searchParams }: { searchParams: { category?: string } }) {
-  const selectedCategory = searchParams.category;
+  const selectedCategory = searchParams.category ?? "all";
 
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories");
   const categories = await categoryRes.json();
