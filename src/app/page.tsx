@@ -1,7 +1,6 @@
 import { FilterCategory } from "@/components/filterProducts";
 import ProductDisplay from "@/components/productDisplay";
 import { Montserrat } from "next/font/google";
-
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 interface Product {
@@ -17,9 +16,8 @@ interface Product {
   };
 }
 
-
-export default async function Home({ searchParams }: { searchParams?: Record<string, string> }) {
-  const { category } = searchParams || {};
+export default async function Home({ searchParams }: { searchParams?: Promise<Record<string, string>> }) {
+  const { category } = await searchParams || {};
   const selectedCategory = category;
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories");
   const categories = await categoryRes.json();
