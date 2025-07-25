@@ -17,15 +17,10 @@ interface Product {
   };
 }
 
-type PageProps = {
-  searchParams?: {
-    category?: string;
-  };
-};
 
-export default async function Home({ searchParams }: PageProps) {
-  const { category } = await searchParams || {};
-  const selectedCategory = category || "All";
+export default async function Home({ searchParams }: { searchParams?: Record<string, string> }) {
+  const { category } = searchParams || {};
+  const selectedCategory = category;
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories");
   const categories = await categoryRes.json();
 
