@@ -9,13 +9,13 @@ A mini eCommerce project built with **Next.js 14 App Router**, featuring:
 ---
 
 ## 🚀 Live Demo
-[Live Site](https://your-live-link.com) <!-- Replace with your actual deployed link -->
+[Live Site](https://your-live-link.com)
 
 ---
 
 ## 📸 Preview
 
-![screenshot](public/preview.png) <!-- Add a preview image -->
+![screenshot](public/preview.png)
 
 ---
 
