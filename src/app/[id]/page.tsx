@@ -5,7 +5,7 @@ import ProductDetail from "@/components/productDetail";
 
 interface PageProps {
     params: {
-        id: string | number;
+        id: string;
     }
 }
 
