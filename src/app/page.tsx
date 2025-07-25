@@ -17,11 +17,14 @@ interface Product {
   };
 }
 
-type Props = {
-  searchParams?: { category?: string };
+type PageProps = {
+  searchParams?: {
+    category?: string;
+  };
 };
 
-export default async function Home({ searchParams }: Props) {
+export default async function Home(propsPromise: Promise<PageProps>) {
+  const { searchParams } = await propsPromise;
   console.log(searchParams)
   const selectedCategory = searchParams?.category ?? "all";
 
