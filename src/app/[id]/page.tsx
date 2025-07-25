@@ -6,35 +6,20 @@ import ProductDetail from "@/components/productDetail";
 interface PageProps {
     params: {
         id: string;
-    };
+    }
 }
 
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-}
-
-
-const Page = async ({ params }: PageProps) => {
-    const response = await fetch(`https://fakestoreapi.com/products/${params.id}`);
-
+const page = async({ params }: PageProps) => {
+    const response  = await fetch(`https://fakestoreapi.com/products/${params.id}`);
     if (!response.ok) {
         throw new Error("Failed to fetch product data");
     }
-
+    
     const product = await response.json();
 
     return (
         <main className="container mx-auto px-6 py-8">
-            <Link href="/">
+            <Link href={"/"}>
                 <Button variant="ghost" className="mb-6">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Shop
@@ -43,17 +28,7 @@ const Page = async ({ params }: PageProps) => {
 
             <ProductDetail product={product} />
         </main>
-    );
-};
-
-export default Page;
-
-
-export async function generateStaticParams() {
-    const res = await fetch("https://fakestoreapi.com/products");
-    const products = await res.json();
-
-    return products.map((product: Product) => ({
-        id: product.id.toString(),
-    }));
+    )
 }
+
+export default page;
