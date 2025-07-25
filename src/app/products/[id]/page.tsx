@@ -3,13 +3,35 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ProductDetail from "@/components/productDetail";
 
+interface Product {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+    rating: {
+        rate: number;
+        count: number;
+    };
+}
 
-const page = async({ params }: { params: { id : string}}) => {
-    const response  = await fetch(`https://fakestoreapi.com/products/${params.id}`);
+export async function generateStaticParams() {
+    const res = await fetch("https://fakestoreapi.com/products");
+    const products = await res.json();
+
+    return products.map((product: Product) => ({
+        id: product.id.toString(),
+    }));
+}
+
+// 2. Dynamic route page
+const Page = async ({ params }: { params: { id: string } }) => {
+    const response = await fetch(`https://fakestoreapi.com/products/${params.id}`);
     if (!response.ok) {
         throw new Error("Failed to fetch product data");
     }
-    
+
     const product = await response.json();
 
     return (
@@ -23,7 +45,7 @@ const page = async({ params }: { params: { id : string}}) => {
 
             <ProductDetail product={product} />
         </main>
-    )
-}
+    );
+};
 
-export default page;
+export default Page;
