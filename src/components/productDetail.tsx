@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Star, ShoppingCart, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -15,6 +16,11 @@ interface Product {
         count: number;
     };
 }
+
+export const metadata: Metadata = {
+  title: "Product Detail Page",
+  description: "View more about this product",
+};
 
 const ProductDetail = ({ product }: { product: Product }) => {
     return (
