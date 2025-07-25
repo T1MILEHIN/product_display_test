@@ -51,7 +51,7 @@ const ProductDisplay = ({ product }: ProductCardProps) => {
     const isInView = useInView(ref, { once: true });
     return (
         <Link href={`${product.id}`} className="group">
-            <motion.div ref={ref} initial={{opacity: 0, y: 20}} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{delay: 0.1 * product.id}} layout>
+            <motion.div ref={ref} initial={{opacity: 0, y: 20}} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{delay: 0.15}} layout>
                 <Card className="group cursor-pointer transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 border border-border/50 bg-gradient-card backdrop-blur-sm animate-fade-in">
                     <CardContent className="p-0">
                         <div className="relative overflow-hidden rounded-t-lg">
