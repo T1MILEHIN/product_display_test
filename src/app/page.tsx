@@ -23,16 +23,14 @@ type PageProps = {
   };
 };
 
-export default async function Home(propsPromise: Promise<PageProps>) {
-  const { searchParams } = await propsPromise;
-  console.log(searchParams)
-  const selectedCategory = searchParams?.category ?? "all";
-
+export default async function Home({ searchParams }: PageProps) {
+  const { category } = await searchParams || {};
+  const selectedCategory = category || "All";
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories");
   const categories = await categoryRes.json();
 
   const productUrl =
-    selectedCategory && selectedCategory.toLowerCase() !== "all"
+    selectedCategory && selectedCategory.toLowerCase() !== "All"
       ? `https://fakestoreapi.com/products/category/${selectedCategory}`
       : "https://fakestoreapi.com/products";
 
@@ -40,7 +38,7 @@ export default async function Home(propsPromise: Promise<PageProps>) {
   const products = await productRes.json();
 
   return (
-    <div className="min-h-screen pb-20 gap-16 sm:p-20 p-4">
+    <div className="min-h-screen pb-20 gap-16 sm:p-16 p-4">
       <div className="text-center space-y-4 py-12">
         <h1 className="text-4xl md:text-6xl font-bold bg-blue-500 bg-clip-text text-transparent">
           Premium Collection
