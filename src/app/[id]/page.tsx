@@ -14,7 +14,9 @@ const page = async({ params }: PageProps) => {
     if (!response.ok) {
         throw new Error("Failed to fetch product data");
     }
+    
     const product = await response.json();
+
     return (
         <main className="container mx-auto px-6 py-8">
             <Link href={"/"}>
