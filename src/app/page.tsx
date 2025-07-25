@@ -1,7 +1,6 @@
 import { FilterCategory } from "@/components/filterProducts";
 import ProductDisplay from "@/components/productDisplay";
 import { Montserrat } from "next/font/google";
-import { Suspense } from "react";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -18,8 +17,13 @@ interface Product {
   };
 }
 
-export default async function Home(props: { searchParams?: { category?: string }}) {
-  const selectedCategory = props.searchParams?.category ?? "all";
+type Props = {
+  searchParams?: { category?: string };
+};
+
+export default async function Home({ searchParams }: Props) {
+  console.log(searchParams)
+  const selectedCategory = searchParams?.category ?? "all";
 
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories");
   const categories = await categoryRes.json();
