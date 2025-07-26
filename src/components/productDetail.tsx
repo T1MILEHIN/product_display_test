@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Star, ShoppingCart, Heart } from "lucide-react";
+import { Star, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import AddToCartButton from "@/components/addToCartButton";
 
 interface Product {
     id: number;
@@ -74,10 +75,7 @@ const ProductDetail = ({ product }: { product: Product }) => {
                 </div>
 
                 <div className="flex gap-4 pt-6">
-                    <Button className="flex-1">
-                        <ShoppingCart className="w-4 h-4 mr-2" />
-                        Add to Cart
-                    </Button>
+                    <AddToCartButton id={product.id} />
                     <Button variant="outline">
                         <Heart className="w-4 h-4" />
                     </Button>
