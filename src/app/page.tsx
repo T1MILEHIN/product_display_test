@@ -60,10 +60,14 @@ interface Product {
 //   );
 // }
 
-export default async function Home({searchParams}: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const selectedCategory = searchParams?.category as string | undefined;
+
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+  const selectedCategory = resolvedSearchParams?.category as string | undefined;
 
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories");
   const categories = await categoryRes.json();
