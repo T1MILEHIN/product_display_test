@@ -2,7 +2,6 @@
 import { FaCheck } from "react-icons/fa";
 import { useState, useEffect, createContext, useContext } from "react";
 import { Toaster, toast } from 'sonner';
-
 export const CartContext = createContext({});
 
 import { ReactNode } from "react";
@@ -40,9 +39,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         }
         if (!cartItem.some((item: CartItem) => item === data)) {
             setCartItem((prev: CartItem[]) => [...prev, data]);
-            toast.success(`Successfully added to cart`, {
-                icon: <FaCheck color="green" />
-            });
+            toast.success(`Successfully added to cart`);
         } else {
             toast.error(`This item is already in your cart`);
         }
