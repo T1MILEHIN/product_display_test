@@ -9,7 +9,7 @@ A mini eCommerce project built with **Next.js 14 App Router**, featuring:
 ---
 
 ## 🚀 Live Demo
-[Live Site](https://your-live-link.com)
+[Live Site](https://product-display-test-8c5ohwk3y-t1milehins-projects.vercel.app/)
 
 ---
 
