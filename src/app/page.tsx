@@ -33,7 +33,7 @@ export default async function Home({
   const productUrl =
     selectedCategory && selectedCategory.toLowerCase() !== "all"
       ? `https://fakestoreapi.com/products/category/${selectedCategory}`
-      : "https://fakestoreapi.com/products";
+      : "https://fakestoreapi.com/products?limit=0";
 
   const productRes = await fetch(productUrl);
   const products = await productRes.json();
@@ -44,7 +44,7 @@ export default async function Home({
       product.description.toLowerCase().includes(searchCategory.toLowerCase()) ||
       product.category.toLowerCase().includes(searchCategory.toLowerCase())
     )
-    : products;
+    : products
 
   return (
     <div className="min-h-screen pb-20 gap-16 sm:p-16 p-4">
@@ -93,7 +93,7 @@ export default async function Home({
             <ProductDisplay key={product.id} product={product} />
           ))
         ) : (
-          <div className="col-span-full text-center py-12">
+          <div className="col-span-full text-center pt-32">
             <div className="text-6xl mb-4">🔍</div>
             <h3 className="text-xl font-semibold mb-2">No products found</h3>
             <p className="text-muted-foreground">

@@ -1,4 +1,5 @@
 import { ShoppingBag, Sparkles } from "lucide-react";
+import ThemeToggler from "./themeToggler";
 
 const Header = () => {
     return (
@@ -8,12 +9,16 @@ const Header = () => {
                     <div className="flex items-center gap-2">
                         <div className="flex items-center gap-2 text-2xl font-bold">
                             <div className="p-2 text-blue-500 rounded-lg shadow-glow">
-                                <Sparkles className="w-6 h-6 text-black" />
+                                <Sparkles className="w-6 h-6 text-black dark:text-white" />
                             </div>
                             <span className="text-blue-500">
                                 TIMI STORE
                             </span>
                         </div>
+                    </div>
+
+                    <div>
+                        <ThemeToggler />
                     </div>
 
                     <div className="flex items-center gap-4">
