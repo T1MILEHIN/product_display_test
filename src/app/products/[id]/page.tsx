@@ -25,7 +25,7 @@ export async function generateStaticParams() {
     }));
 }
 
-const Page = async ({ params }: { params: Promise<{ id: string }>; }) => {
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     const resolvedParams = await params;
     const { id } = resolvedParams;
     const response = await fetch(`https://fakestoreapi.com/products/${id}`);
