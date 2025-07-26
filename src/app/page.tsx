@@ -16,9 +16,8 @@ interface Product {
   };
 }
 
-export default async function Home({ searchParams }: { searchParams?: Record<string, string> }) {
-  const { category: selectedCategory } = searchParams || {};
-  // const selectedCategory = category;
+export default async function Home( searchParams: Promise<{ [key: string]: string | string[] | undefined }>) {
+  const selectedCategory = (await searchParams).category as string | undefined;
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories");
   const categories = await categoryRes.json();
 
