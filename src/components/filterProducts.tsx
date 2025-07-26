@@ -8,6 +8,8 @@ interface CategoryFilterProps {
 }
 
 export const FilterCategory = ({ categories }: CategoryFilterProps) => {
+
+
     const searchParams = useSearchParams();
     const router = useRouter();
     const selectedCategory = searchParams.get('category');

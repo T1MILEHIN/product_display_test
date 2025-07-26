@@ -16,14 +16,14 @@ interface Product {
   };
 }
 
-export default async function Home({ searchParams }: { searchParams?: Promise<Record<string, string>> }) {
-  const { category } = await searchParams || {};
-  const selectedCategory = category;
+export default async function Home({ searchParams }: { searchParams?: Record<string, string> }) {
+  const { category: selectedCategory } = searchParams || {};
+  // const selectedCategory = category;
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories");
   const categories = await categoryRes.json();
 
   const productUrl =
-    selectedCategory && selectedCategory.toLowerCase() !== "All"
+    selectedCategory && selectedCategory.toLowerCase() !== "all"
       ? `https://fakestoreapi.com/products/category/${selectedCategory}`
       : "https://fakestoreapi.com/products";
 
