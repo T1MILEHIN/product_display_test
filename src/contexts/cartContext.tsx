@@ -1,5 +1,4 @@
 "use client"
-import { FaCheck } from "react-icons/fa";
 import { useState, useEffect, createContext, useContext } from "react";
 import { Toaster, toast } from 'sonner';
 export const CartContext = createContext({});
