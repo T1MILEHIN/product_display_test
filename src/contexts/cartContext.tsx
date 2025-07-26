@@ -51,15 +51,11 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         setCartItem(
             (prev: CartItem[]) => prev.filter((item: CartItem) => item !== id)
         );
-        toast.success(`item removed from cart`, {
-            icon: <FaCheck color="green" />
-        });
+        toast.success(`item removed from cart`)
     }
     const clearCart = () => {
         setCartItem([]);
-        toast.success(`Cart cleared`, {
-            icon: <FaCheck color="green" />
-        });
+        toast.success(`Cart cleared`);
     }
     useEffect(() => {
         localStorage.setItem("cart-item", JSON.stringify(cartItem));
